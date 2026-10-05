@@ -1,0 +1,133 @@
+ <!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>VR Boxing</title>
+</head>
+
+<body>
+
+    <div id="start-screen">
+        <main id="start-layout">
+            <section class="brand-panel" aria-label="VR Boxing">
+                <div class="brand-lockup">
+                    <span class="brand-mark">VR</span>
+                    <span class="brand-caption">BOXING<br>TRAINING ARENA</span>
+                </div>
+                <h1>VR<br><span>BOXING</span></h1>
+                <div class="brand-accent"></div>
+                <p class="brand-tagline">FIND YOUR RHYTHM.<br>OWN THE ROUND.</p>
+                <div class="brand-edition"><span>IMMERSIVE COMBAT</span><span>01 / 02</span></div>
+            </section>
+
+            <section id="start-box" aria-label="Game setup">
+                <header class="panel-heading">
+                    <div>
+                        <div class="panel-kicker">MATCH SETUP</div>
+                        <h2>Choose your round</h2>
+                    </div>
+                    <span class="panel-index">01</span>
+                </header>
+
+                <div class="settings-block">
+                    <div class="setting-label">GAME MODE</div>
+                    <div class="option-group mode-switch">
+                        <button class="mode-button selected" data-mode="SINGLE" aria-pressed="true">SINGLE PLAYER</button>
+                        <button class="mode-button" data-mode="MULTI" aria-pressed="false">MULTIPLAYER</button>
+                    </div>
+                </div>
+
+                <div class="settings-block multiplayer-controls" id="multiplayer-controls" hidden>
+                    <div class="room-heading">
+                        <span class="room-light"></span>
+                        <span class="setting-label">ONLINE ROOM</span>
+                    </div>
+                    <button class="room-button create-room-button" id="create-room-button">CREATE ROOM</button>
+                    <div class="room-join-row">
+                        <input id="room-code-input" type="text" maxlength="5" placeholder="ROOM CODE" aria-label="Room code" autocomplete="off">
+                        <button class="room-button join-room-button" id="join-room-button">JOIN</button>
+                    </div>
+                    <div id="room-code-display" aria-live="polite"></div>
+                    <div id="room-status" role="status" aria-live="polite">Create a room or enter a room code.</div>
+                </div>
+
+                <div class="settings-block singleplayer-mode-block" id="singleplayer-mode-block">
+                    <div class="setting-label">SINGLEPLAYER MODE</div>
+                    <div class="option-group mode-switch singleplayer-mode-switch">
+                        <button class="singleplayer-mode-button selected" data-current-mode="classic" aria-pressed="true">CLASSIC</button>
+                        <button class="singleplayer-mode-button" data-current-mode="reflex" aria-pressed="false">REFLEX</button>
+                        <button class="singleplayer-mode-button" data-current-mode="combo-chain" aria-pressed="false">COMBO CHAIN</button>
+                        <button class="singleplayer-mode-button" data-current-mode="survival" aria-pressed="false">SURVIVAL</button>
+                    </div>
+                </div>
+
+                <div class="settings-block">
+                    <div class="setting-label">DIFFICULTY</div>
+                    <div class="option-group setting-options">
+                        <button class="difficulty-button" data-difficulty="EASY">EASY</button>
+                        <button class="difficulty-button selected" data-difficulty="NORMAL">NORMAL</button>
+                        <button class="difficulty-button" data-difficulty="HARD">HARD</button>
+                    </div>
+                </div>
+
+                <div class="settings-block duration-block" id="round-time-block">
+                    <div class="setting-label">ROUND TIME</div>
+                    <div class="option-group setting-options">
+                        <button class="time-button selected" data-time="30">30 SEC</button>
+                        <button class="time-button" data-time="60">60 SEC</button>
+                    </div>
+                </div>
+
+                <button id="start-button">PLAY</button>
+            </section>
+
+            <section id="room-lobby" hidden aria-label="Multiplayer room">
+                <header class="panel-heading">
+                    <div>
+                        <div class="panel-kicker">MULTIPLAYER ROOM</div>
+                        <h2>Waiting room</h2>
+                    </div>
+                    <span class="panel-index">02</span>
+                </header>
+                <div class="lobby-code-label">ROOM CODE</div>
+                <div id="lobby-room-code" aria-live="polite"></div>
+                <div class="room-player-list">
+                    <div class="room-player-row">
+                        <span class="room-player-number">P1</span>
+                        <div class="room-player-copy"><strong>PLAYER 1</strong><span id="player-one-label">HOST</span></div>
+                        <span class="room-player-status" id="player-one-status">HOST</span>
+                    </div>
+                    <div class="room-player-row">
+                        <span class="room-player-number">P2</span>
+                        <div class="room-player-copy"><strong>PLAYER 2</strong><span>CHALLENGER</span></div>
+                        <span class="room-player-status" id="player-two-status">WAITING</span>
+                    </div>
+                </div>
+                <div id="lobby-status" role="status" aria-live="polite">Waiting for a player to join.</div>
+                <button id="room-action-button" disabled>WAITING FOR PLAYER 2</button>
+                <button id="leave-room-button">LEAVE ROOM</button>
+            </section>
+        </main>
+
+        <footer class="screen-footer">
+            <span>VR BOXING <i></i> TRAINING ARENA</span>
+            <span>STEP INTO THE RING</span>
+        </footer>
+    </div>
+
+    <script
+        type="module"
+        src="/src/main.js"
+    ></script>
+
+</body>
+
+</html>
